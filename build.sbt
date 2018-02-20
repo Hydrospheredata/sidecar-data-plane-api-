@@ -2,11 +2,12 @@ organization := "io.hydrosphere"
 name := "envoy-data-plane-api"
 version := "v1.5.0_1"
 
-scalaVersion := "2.11.11"
+scalaVersion := "2.12.4"
+crossScalaVersions := Seq("2.12.4", "2.11.11")
 
 publishMavenStyle := true
 
-libraryDependencies++=Seq(
+libraryDependencies ++= Seq(
   "com.trueaccord.scalapb" %% "compilerplugin" % com.trueaccord.scalapb.compiler.Version.scalapbVersion,
   "com.trueaccord.scalapb" %% "scalapb-runtime-grpc" % com.trueaccord.scalapb.compiler.Version.scalapbVersion,
   "com.google.api.grpc" % "googleapis-common-protos" % "0.0.3" % "protobuf"
