@@ -25,7 +25,7 @@ node("JenkinsOnDemand") {
     }
 
     stage('Build') {
-        sh "sh "${env.WORKSPACE}/sbt/sbt +package"
+        sh "sh ${env.WORKSPACE}/sbt/sbt +package"
     }
 
     if (isReleaseJob()) {
@@ -35,8 +35,8 @@ node("JenkinsOnDemand") {
         }
 
         stage('Push to Maven') {
-            sh "./sbt/sbt 'set pgpPassphrase := Some(Array())' +publishSigned"
-            sh "./sbt/sbt 'sonatypeReleaseAll'"
+            sh "${env.WORKSPACE}/sbt/sbt 'set pgpPassphrase := Some(Array())' +publishSigned"
+            sh "${env.WORKSPACE}/sbt/sbt 'sonatypeReleaseAll'"
         }
     } else {
         echo "Do nothing"
